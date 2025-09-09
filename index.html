@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BusinessAI Agent System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="brand">
+                    <i class="fas fa-robot"></i>
+                    <h1>BusinessAI Agent System</h1>
+                </div>
+                <div class="header-actions">
+                    <div class="status-indicator">
+                        <span class="status-dot active"></span>
+                        <span id="system-status">System Active</span>
+                    </div>
+                    <div class="user-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Layout -->
+        <div class="main-layout">
+            <!-- Sidebar Navigation -->
+            <nav class="sidebar">
+                <div class="nav-items">
+                    <button class="nav-item active" data-tab="dashboard">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Dashboard</span>
+                    </button>
+                    <button class="nav-item" data-tab="knowledge">
+                        <i class="fas fa-database"></i>
+                        <span>Knowledge Base</span>
+                    </button>
+                    <button class="nav-item" data-tab="chat">
+                        <i class="fas fa-comments"></i>
+                        <span>Agent Chat</span>
+                    </button>
+                    <button class="nav-item" data-tab="agents">
+                        <i class="fas fa-cogs"></i>
+                        <span>Agent Config</span>
+                    </button>
+                    <button class="nav-item" data-tab="documents">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Documents</span>
+                    </button>
+                    <button class="nav-item" data-tab="analytics">
+                        <i class="fas fa-analytics"></i>
+                        <span>Analytics</span>
+                    </button>
+                    <button class="nav-item" data-tab="settings">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </button>
+                </div>
+            </nav>
+
+            <!-- Main Content Area -->
+            <main class="main-content">
+                <!-- Dashboard Tab -->
+                <div class="tab-content active" id="dashboard">
+                    <div class="dashboard-header">
+                        <h2>System Overview</h2>
+                        <div class="date-info">
+                            <i class="fas fa-calendar"></i>
+                            <span id="current-date">September 9, 2025</span>
+                        </div>
+                    </div>
+
+                    <!-- Key Metrics Cards -->
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="metric-content">
+                                <h3>Knowledge Base</h3>
+                                <div class="metric-value">2,847</div>
+                                <div class="metric-label">Indexed Documents</div>
+                                <div class="metric-change positive">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <span>+12% this week</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="metric-card">
+                            <div class="metric-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <div class="metric-content">
+                                <h3>Agent Interactions</h3>
+                                <div class="metric-value">1,523</div>
+                                <div class="metric-label">Total Queries</div>
+                                <div class="metric-change positive">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <span>+8% this week</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="metric-card">
+                            <div class="metric-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="metric-content">
+                                <h3>Active Agents</h3>
+                                <div class="metric-value">7</div>
+                                <div class="metric-label">Running Systems</div>
+                                <div class="metric-change neutral">
+                                    <i class="fas fa-minus"></i>
+                                    <span>No change</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="metric-card">
+                            <div class="metric-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="metric-content">
+                                <h3>Response Time</h3>
+                                <div class="metric-value">1.2s</div>
+                                <div class="metric-label">Average Response</div>
+                                <div class="metric-change positive">
+                                    <i class="fas fa-arrow-down"></i>
+                                    <span>-0.3s improvement</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="dashboard-section">
+                        <div class="section-header">
+                            <h3>Recent Activity</h3>
+                            <button class="btn-secondary">View All</button>
+                        </div>
+                        <div class="activity-list" id="recent-activity">
+                            <!-- Activity items will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- System Health -->
+                    <div class="dashboard-section">
+                        <div class="section-header">
+                            <h3>System Health</h3>
+                        </div>
+                        <div class="health-grid">
+                            <div class="health-item">
+                                <div class="health-indicator good"></div>
+                                <span class="health-label">Database Connection</span>
+                                <span class="health-value">Healthy</span>
+                            </div>
+                            <div class="health-item">
+                                <div class="health-indicator good"></div>
+                                <span class="health-label">API Services</span>
+                                <span class="health-value">Operational</span>
+                            </div>
+                            <div class="health-item">
+                                <div class="health-indicator warning"></div>
+                                <span class="health-label">Memory Usage</span>
+                                <span class="health-value">82%</span>
+                            </div>
+                            <div class="health-item">
+                                <div class="health-indicator good"></div>
+                                <span class="health-label">CPU Load</span>
+                                <span class="health-value">34%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Knowledge Base Tab -->
+                <div class="tab-content" id="knowledge">
+                    <div class="knowledge-header">
+                        <h2>Knowledge Base</h2>
+                        <div class="knowledge-actions">
+                            <button class="btn-primary">
+                                <i class="fas fa-upload"></i>
+                                Upload Document
+                            </button>
+                            <button class="btn-secondary">
+                                <i class="fas fa-filter"></i>
+                                Filter
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Search and Filter -->
+                    <div class="search-section">
+                        <div class="search-bar">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="knowledge-search" placeholder="Search documents...">
+                        </div>
+                        <div class="filter-tabs">
+                            <button class="filter-tab active" data-category="all">All</button>
+                            <button class="filter-tab" data-category="SOP">SOPs</button>
+                            <button class="filter-tab" data-category="Vision">Vision</button>
+                            <button class="filter-tab" data-category="Process">Processes</button>
+                            <button class="filter-tab" data-category="Guide">Guides</button>
+                        </div>
+                    </div>
+
+                    <!-- Documents Grid -->
+                    <div class="documents-grid" id="documents-grid">
+                        <!-- Documents will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Agent Chat Tab -->
+                <div class="tab-content" id="chat">
+                    <div class="chat-container">
+                        <div class="chat-header">
+                            <h2>Agent Chat</h2>
+                            <div class="agent-selector">
+                                <select id="agent-select">
+                                    <option value="general">General Assistant</option>
+                                    <option value="technical">Technical Support</option>
+                                    <option value="business">Business Analyst</option>
+                                    <option value="hr">HR Assistant</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="chat-messages" id="chat-messages">
+                            <div class="message agent-message">
+                                <div class="message-avatar">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="message-content">
+                                    <div class="message-text">Hello! I'm your BusinessAI Assistant. How can I help you today?</div>
+                                    <div class="message-time">Just now</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="chat-input-container">
+                            <div class="chat-input">
+                                <input type="text" id="chat-input" placeholder="Type your message...">
+                                <button id="send-message" class="btn-primary">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agent Config Tab -->
+                <div class="tab-content" id="agents">
+                    <div class="agents-header">
+                        <h2>Agent Configuration</h2>
+                        <button class="btn-primary">
+                            <i class="fas fa-plus"></i>
+                            Add Agent
+                        </button>
+                    </div>
+
+                    <div class="agents-grid" id="agents-grid">
+                        <!-- Agents will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Documents Tab -->
+                <div class="tab-content" id="documents">
+                    <div class="documents-header">
+                        <h2>Document Management</h2>
+                        <div class="document-stats">
+                            <div class="stat-item">
+                                <span class="stat-value">2,847</span>
+                                <span class="stat-label">Total Documents</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">156 MB</span>
+                                <span class="stat-label">Storage Used</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">23</span>
+                                <span class="stat-label">Recent Uploads</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="documents-table-container">
+                        <table class="documents-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Size</th>
+                                    <th>Upload Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="documents-table-body">
+                                <!-- Table rows will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Analytics Tab -->
+                <div class="tab-content" id="analytics">
+                    <div class="analytics-header">
+                        <h2>Analytics & Insights</h2>
+                        <div class="date-range-selector">
+                            <select id="analytics-range">
+                                <option value="7d">Last 7 days</option>
+                                <option value="30d">Last 30 days</option>
+                                <option value="90d">Last 90 days</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="analytics-content">
+                        <div class="chart-placeholder">
+                            <i class="fas fa-chart-line"></i>
+                            <p>Analytics charts would be displayed here</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings Tab -->
+                <div class="tab-content" id="settings">
+                    <div class="settings-header">
+                        <h2>System Settings</h2>
+                    </div>
+
+                    <div class="settings-content">
+                        <div class="settings-section">
+                            <h3>General Settings</h3>
+                            <div class="setting-item">
+                                <label>System Name</label>
+                                <input type="text" value="BusinessAI Agent System">
+                            </div>
+                            <div class="setting-item">
+                                <label>Default Agent</label>
+                                <select>
+                                    <option>General Assistant</option>
+                                    <option>Technical Support</option>
+                                    <option>Business Analyst</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <h3>Performance Settings</h3>
+                            <div class="setting-item">
+                                <label>Response Timeout (seconds)</label>
+                                <input type="number" value="30">
+                            </div>
+                            <div class="setting-item">
+                                <label>Max Concurrent Requests</label>
+                                <input type="number" value="50">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
